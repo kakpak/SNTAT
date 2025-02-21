@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مضاعفة العداد سنتات</title>
+    <style>
+        h1 {
+            color: #4CAF50;
+            font-size: 36px;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            text-shadow: 2px 2px 4px #aaa;
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #4CAF50;
+        }
+
+        input[type="number"], input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>مضاعفة العداد سنتات</h1>
+
+    <!-- عرض الصورة -->
+    <img id="displayImage" src="https://firebasestorage.googleapis.com/v0/b/getdata-a1c73.appspot.com/o/Screenshot_20241216-230648_1.png?alt=media&token=ef9002a5-3951-40f3-9d46-4a7998461a90" alt="صورة مضاعفة العداد">
+
+    <label for="originalCounter">⬇️ أدخل قيمة عدادك الأصلي</label>
+    <input type="number" id="originalCounter" placeholder="قيمة العداد الاصلي" required>
+
+    <label for="multiplyCounter">أدخل القيمة التي تريد إضافتها للعداد ⬇️</label>
+    <input type="number" id="multiplyCounter" min="50" max="100000" value="50" required>
+
+    <label for="referralCode">أدخل رمز الإحالة</label>
+    <input type="text" id="referralCode" required>
+
+    <button type="button" onclick="validateAndRedirect()">مضاعفة الآن</button>
+
+    <script>
+        function validateAndRedirect() {
+            const originalCounter = document.getElementById('originalCounter').value.trim();
+            const multiplyCounter = parseInt(document.getElementById('multiplyCounter').value);
+            const referralCode = document.getElementById('referralCode').value.trim();
+
+            // التحقق من أن العداد الأصلي غير فارغ
+            if (originalCounter === "") {
+                alert('يرجى إدخال قيمة العداد الأصلي.');
+                return;
+            }
+
+            // التحقق من قيمة الحقل (بين 50 و100,000)
+            if (multiplyCounter < 50 || multiplyCounter > 100000) {
+                alert('القيمة التي تريد إضافتها للعداد يجب أن تكون بين 50 و 100,000.');
+                return;
+            }
+
+            // التحقق من رمز الإحالة
+            if (!referralCode) {
+                alert('يرجى إدخال رمز الإحالة.');
+                return;
+            }
+
+            // التحقق ناجح، الانتقال إلى الرابط
+            const url = "https://kakpak.github.io/SNTAT/page2.html"; // الرابط الذي تريد الانتقال إليه
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>
